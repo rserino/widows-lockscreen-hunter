@@ -20,16 +20,15 @@ def create_new_folder(user_name):
         if user_response == "y" or user_response == "Y":
             shutil.rmtree(new_folder_location)
             os.makedirs(new_folder_location)
-            return new_folder_location
         elif user_response == "n" or user_response =="N":
             print("OK Bye!")
             exit()
         else:
             print("You must answer with either a \"Y\" or a \"N\".")
-            create_new_folder(user_name)
+            return create_new_folder(user_name)
     else:
         os.makedirs(new_folder_location)
-        return new_folder_location
+    return new_folder_location
 
 #Copy windows lockscreens to "Copy Screens"
 def copy_files(user_name, new_folder_location):
