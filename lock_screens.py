@@ -2,15 +2,12 @@ import os
 import shutil
 from pathlib import Path
 
-#Return the user name as a string
 def get_user_name():
     cwd = os.getcwd()
     split_cwd = cwd.split('\\')
     user_name = split_cwd[2]
     return user_name
 
-#Create a new folder on the desktop called "Copy Screens"
-#Return the path of "Copy Screens" as a string
 def create_new_folder(user_name):
     new_folder_location = "/Users/" + user_name + "/Desktop/Copy_Screens"
     if os.path.isdir(new_folder_location):
@@ -30,7 +27,7 @@ def create_new_folder(user_name):
         os.makedirs(new_folder_location)
     return new_folder_location
 
-#Copy windows lockscreens to "Copy Screens"
+
 def copy_files(user_name, new_folder_location):
     file_location = "/Users/" + user_name +"/AppData/Local/Packages/Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy/LocalState/Assets"
     src_dir = os.chdir(file_location)
@@ -38,7 +35,7 @@ def copy_files(user_name, new_folder_location):
     for file in src_files:
         shutil.copy(file, new_folder_location)
 
-#Change the extension of each file to add ".jpeg"
+
 def add_jpeg(new_folder_location):
     new_folder = os.chdir(new_folder_location)
     dest_files = os.listdir(new_folder)
